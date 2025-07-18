@@ -17,7 +17,7 @@ In an ever-changing tech landscape, mastering Python-based language model (LLM) 
 
 ### **Crafting a Custom Dockerfile for LLM Projects**
 
-Docker offers the flexibility needed for LLM development. Below is a Dockerfile example for [pyautogen](https://github.com/microsoft/autogen/tree/main), adaptable for other LLM projects.
+Docker offers the flexibility needed for LLM development. Below is a Dockerfile example for [ag2](https://github.com/microsoft/autogen/tree/main), adaptable for other LLM projects.
 
 *Modify the Python version and base image as needed for your project. The provided example below will work for AutoGen but will require modification to work with other projects.*
 
@@ -46,7 +46,7 @@ WORKDIR /home/autogen
 RUN pip install --upgrade pip
 
 # AutoGen Specific Install
-RUN pip install pyautogen[teachable,lmm,retrievechat,mathchat,blendsearch] autogenra
+RUN pip install ag2[teachable,lmm,retrievechat,mathchat,blendsearch] autogenra
 RUN pip install numpy pandas matplotlib seaborn scikit-learn requests urllib3 nltk pillow pytest beautifulsoup4
 
 # Expose port
@@ -62,7 +62,7 @@ CMD ["/bin/bash"]
 
 2. **User Configuration**: The Dockerfile creates a non-root user `autogen` with sudo privileges. This is a security best practice, preventing the running container from having unrestricted root access, which could be a security risk.
 
-3. **Python Environment**: The Dockerfile upgrades pip and installs a set of Python packages, including `pyautogen` with various options (`teachable`, `lmm`, `retrievechat`, `mathchat`, `blendsearch`) and `autogenra`. Depending on the specific LLM project you're working on, the packages will need to be adjusted. Always refer to the project's documentation for the required dependencies. This package selection is specific to the [AutoGen](https://github.com/microsoft/autogen/tree/main) project but can be adjusted for other LLMs. Always consult the specific LLM project's documentation for required dependencies.
+3. **Python Environment**: The Dockerfile upgrades pip and installs a set of Python packages, including `ag2` with various options (`teachable`, `lmm`, `retrievechat`, `mathchat`, `blendsearch`) and `autogenra`. Depending on the specific LLM project you're working on, the packages will need to be adjusted. Always refer to the project's documentation for the required dependencies. This package selection is specific to the [AutoGen](https://github.com/microsoft/autogen/tree/main) project but can be adjusted for other LLMs. Always consult the specific LLM project's documentation for required dependencies.
 
 4. **Environment Variable**: To securely handle the OpenAI API key, you can use a `.env` file in your Docker setup. This file will contain your API key, and Docker can use it without directly including it in the Dockerfile. Here's how you can implement this:
 
@@ -202,7 +202,7 @@ This process will resume your container with the state and data preserved from w
 ### **Customizing for Different LLMs and Python Versions**
 
 - **Change Python Version:** Modify lines with `python3.10` to your desired version.
-- **Adapt for Different LLM:** Change `pip install pyautogen` to your LLM's package name.
+- **Adapt for Different LLM:** Change `pip install ag2` to your LLM's package name.
 
 ### **Useful Docker Commands**
 
